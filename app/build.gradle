@@ -1,0 +1,92 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    defaultConfig {
+        applicationId "com.azuredragon.learnings"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        disable 'GoogleAppIndexingWarning'
+        textReport true
+        textOutput "stdout"
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+kapt {
+    correctErrorTypes = true
+}
+
+dependencies {
+    //androidx
+    implementation "androidx.core:core-ktx:$ktxVersion"
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    implementation "androidx.savedstate:savedstate:$savedStateVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerVersion"
+    implementation "androidx.cardview:cardview:$cardviewVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
+    implementation "androidx.vectordrawable:vectordrawable-seekable:$vectorSeekableVersion"
+
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesVersion"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-guava:$coroutinesVersion") {
+        exclude group: 'com.google.guava', module: 'guava'
+    }
+
+    //lottie Animation
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    androidTestImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
+    testImplementation "junit:junit:$junitVersion"
+
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$desugarVersion"
+
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion"
+}
