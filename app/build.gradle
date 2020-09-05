@@ -81,6 +81,7 @@ dependencies {
 
     //lottie Animation
     implementation "com.airbnb.android:lottie:$lottieVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     androidTestImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"

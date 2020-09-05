@@ -1,6 +1,7 @@
 package com.azuredragon.learnings
 
 import android.os.Bundle
+import android.transition.TransitionManager
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,8 +25,6 @@ class LottieFragment : Fragment() {
 
         lifecycleScope.launchWhenResumed {
             delay(30000)
-
-            lottieBinding.lav.gone()
         }
     }
 
