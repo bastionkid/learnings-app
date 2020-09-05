@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">LearningsApp</string>
+
+    <string name="label_one">One</string>
+    <string name="label_two">Two</string>
+    <string name="label_three">Three</string>
+
 </resources>
