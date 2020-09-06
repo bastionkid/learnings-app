@@ -1,33 +1,25 @@
-package com.azuredragon.learnings
+package com.azuredragon.learnings.ui.fragments
 
 import android.os.Bundle
 import android.transition.TransitionManager
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationSet
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.transition.Transition
-import androidx.transition.TransitionSet
+import com.azuredragon.learnings.R
 import com.azuredragon.learnings.databinding.FragmentConstraintLayoutLayerBinding
-import com.azuredragon.learnings.databinding.FragmentLottieBinding
+import com.azuredragon.learnings.ktxextensions.dataBindingsLazy
 import kotlinx.coroutines.delay
 
-class ConstraintLayoutLayerFragment : Fragment() {
+class ConstraintLayoutLayerFragment : Fragment(R.layout.fragment_constraint_layout_layer) {
 
-    private lateinit var constraintLayoutLayerBinding: FragmentConstraintLayoutLayerBinding
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        constraintLayoutLayerBinding = FragmentConstraintLayoutLayerBinding.inflate(inflater, container, false)
-        return constraintLayoutLayerBinding.root
-    }
+    private val constraintLayoutLayerBinding: FragmentConstraintLayoutLayerBinding by dataBindingsLazy()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         lifecycleScope.launchWhenResumed {
-            delay(5000)
+            delay(10000)
 
             TransitionManager.beginDelayedTransition(constraintLayoutLayerBinding.root as ViewGroup)
             constraintLayoutLayerBinding.layerButtons.scaleX = 0.5f

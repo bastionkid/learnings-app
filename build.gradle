@@ -24,7 +24,9 @@ buildscript {
         constraintLayoutVersion = '2.0.1'
         vectorSeekableVersion = '1.0.0-alpha01'
 
-        lottieVersion = '3.4.1'
+        lottieVersion = '3.4.2'
+
+        timberVersion = '4.7.1'
 
         leakcanaryVersion = '2.3'
 

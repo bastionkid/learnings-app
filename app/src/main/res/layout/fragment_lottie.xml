@@ -3,7 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".LottieFragment">
+    tools:context=".ui.fragments.LottieFragment">
+
+    <data>
+        <variable
+            name="onNextClickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,12 +22,23 @@
             android:scaleType="centerInside"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/wallet_loading"
+            app:lottie_rawRes="@raw/skipping_mascot_lottie"
             app:lottie_speed="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="32dp"
+            android:text="@string/label_next"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:onClick="@{onNextClickListener}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,7 +1,7 @@
-package com.azuredragon.learnings.ui
+package com.azuredragon.learnings.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.azuredragon.learnings.R
 import com.azuredragon.learnings.databinding.ActivityMainBinding

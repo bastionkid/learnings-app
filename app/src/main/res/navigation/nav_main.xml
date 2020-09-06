@@ -7,14 +7,29 @@
 
     <fragment
         android:id="@+id/lottieFragment"
-        android:name="com.azuredragon.learnings.LottieFragment"
+        android:name="com.azuredragon.learnings.ui.fragments.LottieFragment"
         android:label="fragment_lottie"
-        tools:layout="@layout/fragment_lottie" />
+        tools:layout="@layout/fragment_lottie" >
+
+        <action
+            android:id="@+id/action_lottieFragment_to_constraintLayoutLayerFragment"
+            app:destination="@id/constraintLayoutLayerFragment" />
+        <action
+            android:id="@+id/action_lottieFragment_to_blankFragment"
+            app:destination="@id/blankFragment" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/constraintLayoutLayerFragment"
-        android:name="com.azuredragon.learnings.ConstraintLayoutLayerFragment"
+        android:name="com.azuredragon.learnings.ui.fragments.ConstraintLayoutLayerFragment"
         android:label="fragment_constraint_layout_layer"
         tools:layout="@layout/fragment_constraint_layout_layer" />
+
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="com.azuredragon.learnings.ui.fragments.BlankFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_blank" />
 
 </navigation>
