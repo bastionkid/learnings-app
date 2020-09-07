@@ -22,7 +22,7 @@ class ConstraintLayoutLayerFragment : Fragment(R.layout.fragment_constraint_layo
             delay(10000)
 
             TransitionManager.beginDelayedTransition(constraintLayoutLayerBinding.root as ViewGroup)
-            constraintLayoutLayerBinding.layerButtons.scaleX = 0.5f
+            constraintLayoutLayerBinding.layerButtons.rotation = -45f
         }
     }
 

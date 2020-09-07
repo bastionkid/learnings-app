@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.azuredragon.learnings.R
 import com.azuredragon.learnings.databinding.FragmentLottieBinding
+import com.azuredragon.learnings.ktxextensions.bytesToMb
 import com.azuredragon.learnings.ktxextensions.dataBindingsLazy
 import com.azuredragon.learnings.ktxextensions.gone
 import com.azuredragon.learnings.ktxextensions.navigateSafely
 import kotlinx.coroutines.delay
+import timber.log.Timber
 
 class LottieFragment : Fragment(R.layout.fragment_lottie) {
 
@@ -27,7 +29,7 @@ class LottieFragment : Fragment(R.layout.fragment_lottie) {
         lifecycleScope.launchWhenResumed {
             delay(10000)
 
-            println("When Visibility = View.VISIBLE Total Memory: ${Runtime.getRuntime().totalMemory()}, Free Memory: ${Runtime.getRuntime().freeMemory()}")
+            Timber.d("When Visibility = View.VISIBLE Total Memory: ${Runtime.getRuntime().totalMemory().bytesToMb()}, Used Memory: ${(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()).bytesToMb()}")
 
             delay(10000)
 
@@ -35,7 +37,7 @@ class LottieFragment : Fragment(R.layout.fragment_lottie) {
 
             delay(10000)
 
-            println("After Visibility = View.GONE Total Memory: ${Runtime.getRuntime().totalMemory()}, Free Memory: ${Runtime.getRuntime().freeMemory()}")
+            Timber.d("After Visibility = View.GONE Total Memory: ${Runtime.getRuntime().totalMemory().bytesToMb()}, Used Memory: ${(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()).bytesToMb()}")
 
             navigateSafely(R.id.action_lottieFragment_to_blankFragment)
         }
