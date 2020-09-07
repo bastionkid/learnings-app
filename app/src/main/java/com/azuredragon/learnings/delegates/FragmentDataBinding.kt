@@ -1,4 +1,4 @@
-package com.azuredragon.learnings.ktxextensions
+package com.azuredragon.learnings.delegates
 
 import android.os.Handler
 import android.os.Looper
@@ -20,17 +20,17 @@ class FragmentDataBinding<T: ViewDataBinding>: ReadOnlyProperty<Fragment, T>, Li
     private var lifecycleOwner: LifecycleOwner? = null
 
     @MainThread
-    override fun getValue(fragment: Fragment, property: KProperty<*>): T {
+    override fun getValue(thisRef: Fragment, property: KProperty<*>): T {
         val viewDataBinding = cached
 
         return if (viewDataBinding != null) {
             viewDataBinding
         } else {
-            lifecycleOwner = fragment.viewLifecycleOwner
+            lifecycleOwner = thisRef.viewLifecycleOwner
 
             lifecycleOwner?.lifecycle?.addObserver(this)
 
-            DataBindingUtil.bind<T>(fragment.requireView()).apply {
+            DataBindingUtil.bind<T>(thisRef.requireView()).apply {
                 cached = this
             }!!
         }

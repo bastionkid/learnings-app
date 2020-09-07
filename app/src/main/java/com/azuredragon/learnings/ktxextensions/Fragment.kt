@@ -4,6 +4,8 @@ import androidx.annotation.MainThread
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.azuredragon.learnings.delegates.FragmentDataBinding
+import com.azuredragon.learnings.delegates.FragmentDataBindingLazy
 import kotlin.properties.ReadOnlyProperty
 
 fun Fragment.navigateSafely(destinationId: Int) {

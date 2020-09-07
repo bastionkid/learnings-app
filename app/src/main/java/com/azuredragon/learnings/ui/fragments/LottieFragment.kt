@@ -6,16 +6,23 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.azuredragon.learnings.R
 import com.azuredragon.learnings.databinding.FragmentLottieBinding
-import com.azuredragon.learnings.ktxextensions.bytesToMb
 import com.azuredragon.learnings.ktxextensions.dataBindingsLazy
 import com.azuredragon.learnings.ktxextensions.gone
 import com.azuredragon.learnings.ktxextensions.navigateSafely
+import com.azuredragon.learnings.performance.logJvmHeapMemoryInfo
+import com.azuredragon.learnings.performance.logNativeHeapMemoryInfo
 import kotlinx.coroutines.delay
-import timber.log.Timber
 
 class LottieFragment : Fragment(R.layout.fragment_lottie) {
 
     private val lottieBinding: FragmentLottieBinding by dataBindingsLazy()
+//
+//    private lateinit var lottieBinding: FragmentLottieBinding
+//
+//    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+//        lottieBinding = FragmentLottieBinding.inflate(inflater, container, false)
+//        return lottieBinding.root
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,7 +36,8 @@ class LottieFragment : Fragment(R.layout.fragment_lottie) {
         lifecycleScope.launchWhenResumed {
             delay(10000)
 
-            Timber.d("When Visibility = View.VISIBLE Total Memory: ${Runtime.getRuntime().totalMemory().bytesToMb()}, Used Memory: ${(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()).bytesToMb()}")
+            logJvmHeapMemoryInfo("When Visibility = View.VISIBLE")
+            logNativeHeapMemoryInfo("When Visibility = View.VISIBLE")
 
             delay(10000)
 
@@ -37,7 +45,8 @@ class LottieFragment : Fragment(R.layout.fragment_lottie) {
 
             delay(10000)
 
-            Timber.d("After Visibility = View.GONE Total Memory: ${Runtime.getRuntime().totalMemory().bytesToMb()}, Used Memory: ${(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()).bytesToMb()}")
+            logJvmHeapMemoryInfo("After Visibility = View.GONE")
+            logNativeHeapMemoryInfo("After Visibility = View.GONE")
 
             navigateSafely(R.id.action_lottieFragment_to_blankFragment)
         }

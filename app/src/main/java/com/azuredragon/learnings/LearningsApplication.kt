@@ -1,6 +1,7 @@
 package com.azuredragon.learnings
 
 import android.app.Application
+import android.content.Context
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
@@ -24,5 +25,7 @@ class LearningsApplication: Application() {
 
     companion object {
         var instance: LearningsApplication? = null
+
+        fun getApplicationContext(): Context = instance!!.applicationContext
     }
 }

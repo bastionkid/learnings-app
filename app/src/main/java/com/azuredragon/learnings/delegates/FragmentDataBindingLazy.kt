@@ -1,4 +1,4 @@
-package com.azuredragon.learnings.ktxextensions
+package com.azuredragon.learnings.delegates
 
 import android.os.Handler
 import android.os.Looper
@@ -20,7 +20,7 @@ class FragmentDataBindingLazy<T: ViewDataBinding>(private val fragment: Fragment
             } else {
                 fragment.viewLifecycleOwner.lifecycle.addObserver(this)
 
-                cached = DataBindingUtil.bind<T>(fragment.requireView())
+                cached = DataBindingUtil.bind(fragment.requireView())
                 cached!!
             }
 

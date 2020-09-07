@@ -6,11 +6,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.azuredragon.learnings.R
 import com.azuredragon.learnings.databinding.FragmentBlankBinding
-import com.azuredragon.learnings.ktxextensions.bytesToMb
 import com.azuredragon.learnings.ktxextensions.dataBindings
+import com.azuredragon.learnings.performance.logJvmHeapMemoryInfo
+import com.azuredragon.learnings.performance.logNativeHeapMemoryInfo
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class BlankFragment : Fragment(R.layout.fragment_blank) {
 
@@ -22,7 +22,15 @@ class BlankFragment : Fragment(R.layout.fragment_blank) {
         lifecycleScope.launch {
             delay(10000)
 
-            Timber.d("After 10s of opening BlankFragment Total Memory: ${Runtime.getRuntime().totalMemory().bytesToMb()}, Used Memory: ${(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()).bytesToMb()}")
+            logJvmHeapMemoryInfo("After 10s of onViewCreated() of ${BlankFragment::class.java.canonicalName}")
+            logNativeHeapMemoryInfo("After 10s of onViewCreated() of ${BlankFragment::class.java.canonicalName}")
+
+            System.gc()
+
+            delay(10000)
+
+            logJvmHeapMemoryInfo("After 10s of running manual GC of ${BlankFragment::class.java.canonicalName}")
+            logNativeHeapMemoryInfo("After 10s of running manual GC of ${BlankFragment::class.java.canonicalName}")
         }
     }
 
