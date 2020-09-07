@@ -65,10 +65,10 @@ fun logMemoryStatsForCurrentProcess(prefixTag: String? = null) {
  * & free heap size [Runtime.freeMemory]
  * in MB
  *
- * @param [prefixTag] String to be used as prefix for the log
+ * @param [messagePrefix] String to be used as prefix for the log message
  */
-fun logJvmHeapMemoryInfo(prefixTag: String? = null) {
-    Timber.d("${prefixTag ?: ""} \nMax JVM heap size: %f MB, \nTotal JVM heap size: %f MB, \nUsed JVM heap size: %f MB, \nFree JVM heap size: %f MB",
+fun logJvmHeapMemoryInfo(messagePrefix: String? = null) {
+    Timber.d("${messagePrefix ?: ""} \nMax JVM heap size: %f MB, \nTotal JVM heap size: %f MB, \nUsed JVM heap size: %f MB, \nFree JVM heap size: %f MB",
             Runtime.getRuntime().maxMemory().bytesToMb(),
             Runtime.getRuntime().totalMemory().bytesToMb(),
             (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()).bytesToMb(),
@@ -83,12 +83,22 @@ fun logJvmHeapMemoryInfo(prefixTag: String? = null) {
  * & free native heap size [Debug.getNativeHeapFreeSize]
  * in MB
  *
- * @param [prefixTag] String to be used as prefix for the log
+ * @param [messagePrefix] String to be used as prefix for the log message
  */
-fun logNativeHeapMemoryInfo(prefixTag: String? = null) {
-    Timber.d("${prefixTag ?: ""} \nMax Native heap size: %f MB, \nTotal Native heap size: %f MB, \nUsed Native heap size: %f MB, \nFree Native heap size: %f MB",
+fun logNativeHeapMemoryInfo(messagePrefix: String? = null) {
+    Timber.d("${messagePrefix ?: ""} \nMax Native heap size: %f MB, \nTotal Native heap size: %f MB, \nUsed Native heap size: %f MB, \nFree Native heap size: %f MB",
             Debug.getNativeHeapSize().bytesToMb(),
             Debug.getNativeHeapAllocatedSize().bytesToMb(),
             (Debug.getNativeHeapAllocatedSize() - Debug.getNativeHeapFreeSize()).bytesToMb(),
             Debug.getNativeHeapFreeSize().bytesToMb())
+}
+
+/**
+ * Executes both [logJvmHeapMemoryInfo] & [logNativeHeapMemoryInfo]
+ *
+ * @param [messagePrefix] String to be used as prefix for the log message
+ */
+fun logBothJvmAndNativeHeapMemoryInfo(messagePrefix: String? = null) {
+    logJvmHeapMemoryInfo(messagePrefix)
+    logNativeHeapMemoryInfo(messagePrefix)
 }
