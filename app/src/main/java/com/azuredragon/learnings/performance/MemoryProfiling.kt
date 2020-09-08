@@ -40,7 +40,7 @@ fun getMemoryInfoForCurrentProcess(): Debug.MemoryInfo {
 /**
  * Provides [Debug.MemoryInfo.getMemoryStats] which has memory stats info for current app process
  *
- * @return Map<String, String> having
+ * @return Map<String, String>
  */
 @RequiresApi(Build.VERSION_CODES.M)
 fun getMemoryStatsForCurrentProcess(): Map<String, String> {
@@ -102,3 +102,41 @@ fun logBothJvmAndNativeHeapMemoryInfo(messagePrefix: String? = null) {
     logJvmHeapMemoryInfo(messagePrefix)
     logNativeHeapMemoryInfo(messagePrefix)
 }
+
+/**
+ * Provides [JvmHeapMemoryInfo] which encapsulates native memory related stats
+ *
+ * @return [JvmHeapMemoryInfo]
+ */
+fun getJvmHeapMemoryInfo(): JvmHeapMemoryInfo = JvmHeapMemoryInfo(
+    maxMemoryInMb = Runtime.getRuntime().maxMemory().bytesToMb(),
+    totalMemoryInMb = Runtime.getRuntime().totalMemory().bytesToMb(),
+    usedMemoryInMb = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()).bytesToMb(),
+    freeMemoryInMb = Runtime.getRuntime().freeMemory().bytesToMb()
+)
+
+/**
+ * Provides [NativeHeapMemoryInfo] which encapsulates native memory related stats
+ *
+ * @return [NativeHeapMemoryInfo]
+ */
+fun getNativeHeapMemoryInfo(): NativeHeapMemoryInfo = NativeHeapMemoryInfo(
+    maxMemoryInMb = Debug.getNativeHeapSize().bytesToMb(),
+    allocatedMemoryInMb = Debug.getNativeHeapAllocatedSize().bytesToMb(),
+    usedMemoryInMb = (Debug.getNativeHeapAllocatedSize() - Debug.getNativeHeapFreeSize()).bytesToMb(),
+    freeMemoryInMb = Debug.getNativeHeapFreeSize().bytesToMb()
+)
+
+data class JvmHeapMemoryInfo(
+    val maxMemoryInMb: Double,
+    val totalMemoryInMb: Double,
+    val usedMemoryInMb: Double,
+    val freeMemoryInMb: Double
+)
+
+data class NativeHeapMemoryInfo(
+    val maxMemoryInMb: Double,
+    val allocatedMemoryInMb: Double,
+    val usedMemoryInMb: Double,
+    val freeMemoryInMb: Double
+)
