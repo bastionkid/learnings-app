@@ -9,6 +9,7 @@ import com.azuredragon.learnings.databinding.FragmentLottieBinding
 import com.azuredragon.learnings.ktxextensions.dataBindingsLazy
 import com.azuredragon.learnings.ktxextensions.gone
 import com.azuredragon.learnings.ktxextensions.navigateSafely
+import com.azuredragon.learnings.performance.getCpuStats
 import com.azuredragon.learnings.performance.logJvmHeapMemoryInfo
 import com.azuredragon.learnings.performance.logNativeHeapMemoryInfo
 import kotlinx.coroutines.delay
@@ -16,13 +17,6 @@ import kotlinx.coroutines.delay
 class LottieFragment : Fragment(R.layout.fragment_lottie) {
 
     private val lottieBinding: FragmentLottieBinding by dataBindingsLazy()
-//
-//    private lateinit var lottieBinding: FragmentLottieBinding
-//
-//    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        lottieBinding = FragmentLottieBinding.inflate(inflater, container, false)
-//        return lottieBinding.root
-//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
