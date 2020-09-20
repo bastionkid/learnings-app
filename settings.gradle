@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':constraintlayout'
 rootProject.name = "LearningsApp"
