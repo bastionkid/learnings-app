@@ -26,6 +26,10 @@ buildscript {
 
         lottieVersion = '3.4.2'
 
+        glideVersion = '4.11.0'
+
+        okhttpVersion = '4.8.0'
+
         timberVersion = '4.7.1'
 
         leakcanaryVersion = '2.3'
