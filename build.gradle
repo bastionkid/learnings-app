@@ -2,7 +2,7 @@
 buildscript {
     ext {
         //tooling
-        gradlePluginVersion = '4.1.0-rc03'
+        gradlePluginVersion = '4.1.0'
         kotlinVersion = '1.4.10'
         ktlintVersion = '0.29.0'
         desugarVersion = '1.0.10'
