@@ -8,11 +8,10 @@ import androidx.lifecycle.lifecycleScope
 import com.azuredragon.learnings.R
 import com.azuredragon.learnings.databinding.FragmentExceptionThrowAndCatchBinding
 import com.azuredragon.learnings.ktxextensions.dataBindingsLazy
-import com.azuredragon.learnings.ui.activities.MainActivity
 import com.azuredragon.learnings.ui.utils.UncaughtExceptionHandler
 import kotlinx.coroutines.delay
 
-class ExceptionThrowAndCatchFragment : Fragment(R.layout.fragment_exception_throw_and_catch) {
+class ExceptionThrowAndCatchFragment: Fragment(R.layout.fragment_exception_throw_and_catch) {
 
     private val exceptionThrowAndCatchBinding: FragmentExceptionThrowAndCatchBinding by dataBindingsLazy()
 
@@ -30,7 +29,9 @@ class ExceptionThrowAndCatchFragment : Fragment(R.layout.fragment_exception_thro
         Thread.setDefaultUncaughtExceptionHandler(UncaughtExceptionHandler {
             requireActivity().finish()
 
-            startActivity(Intent(requireActivity(), MainActivity::class.java).apply {
+            val intent = requireActivity().packageManager.getLaunchIntentForPackage(requireActivity().packageName)
+
+            startActivity(intent?.apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
             })
         })

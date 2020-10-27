@@ -8,7 +8,7 @@ import com.azuredragon.learnings.R
 import com.azuredragon.learnings.databinding.FragmentConstraintLayoutLayerBinding
 import com.azuredragon.learnings.ktxextensions.dataBindingsLazy
 
-class ConstraintLayoutLayerFragment : Fragment(R.layout.fragment_constraint_layout_layer) {
+class ConstraintLayoutLayerFragment: Fragment(R.layout.fragment_constraint_layout_layer) {
 
     private val constraintLayoutLayerBinding: FragmentConstraintLayoutLayerBinding by dataBindingsLazy()
 
