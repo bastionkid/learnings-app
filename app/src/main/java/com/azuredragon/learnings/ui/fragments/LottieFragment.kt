@@ -16,6 +16,8 @@ class LottieFragment : Fragment(R.layout.fragment_lottie) {
         super.onViewCreated(view, savedInstanceState)
 
         lottieBinding.apply {
+            ringLoader.showLoading()
+
             setOnNextClickListener {
                 navigateSafely(R.id.action_lottieFragment_to_constraintLayoutLayerFragment)
             }

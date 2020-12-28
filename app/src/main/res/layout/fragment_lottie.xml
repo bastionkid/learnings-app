@@ -29,6 +29,18 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
+        <com.azuredragon.learnings.ui.custom.RingLoader
+            android:id="@+id/ring_loader"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:rl_circle_radius="100"
+            app:rl_stroke_width="20"
+            app:rl_stroke_color="@color/purple_500"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
