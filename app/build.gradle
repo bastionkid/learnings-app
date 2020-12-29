@@ -54,9 +54,6 @@ kapt {
 }
 
 dependencies {
-    implementation project(":constraintlayout")
-    implementation files('src/main/libs/constraintlayout-solver-2.0.2-alpha01.jar')
-
     //androidx
     implementation "androidx.core:core-ktx:$ktxVersion"
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
@@ -65,7 +62,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
     implementation "androidx.savedstate:savedstate:$savedStateVersion"
     implementation "com.google.android.material:material:$materialVersion"
-//    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerVersion"
     implementation "androidx.cardview:cardview:$cardviewVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"

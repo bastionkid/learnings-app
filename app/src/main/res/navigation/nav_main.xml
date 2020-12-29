@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/lottieFragment">
+    app:startDestination="@id/flowTestFragment">
 
     <fragment
         android:id="@+id/lottieFragment"
@@ -43,5 +43,10 @@
         android:id="@+id/gridViewSpanFragment"
         android:name="com.azuredragon.learnings.ui.fragments.GridViewSpanFragment"
         android:label="GridViewSpanFragment" />
+
+    <fragment
+        android:id="@+id/flowTestFragment"
+        android:name="com.azuredragon.learnings.ui.fragments.FlowTestFragment"
+        android:label="FlowTestFragment" />
 
 </navigation>

@@ -3,7 +3,7 @@ buildscript {
     ext {
         //tooling
         gradlePluginVersion = '4.1.0'
-        kotlinVersion = '1.4.10'
+        kotlinVersion = '1.4.30-M1'
         ktlintVersion = '0.29.0'
         desugarVersion = '1.0.10'
 
@@ -21,7 +21,7 @@ buildscript {
         safetynetVersion = '17.0.0'
         pagingVersion = '2.1.2'
         coroutinesVersion = '1.3.6'
-        constraintLayoutVersion = '2.0.1'
+        constraintLayoutVersion = '2.0.2'
         vectorSeekableVersion = '1.0.0-alpha02'
 
         lottieVersion = '3.4.2'

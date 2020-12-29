@@ -8,7 +8,7 @@ import com.azuredragon.learnings.databinding.FragmentLottieBinding
 import com.azuredragon.learnings.ktxextensions.dataBindingsLazy
 import com.azuredragon.learnings.ktxextensions.navigateSafely
 
-class LottieFragment : Fragment(R.layout.fragment_lottie) {
+class LottieFragment: Fragment(R.layout.fragment_lottie) {
 
     private val lottieBinding: FragmentLottieBinding by dataBindingsLazy()
 
