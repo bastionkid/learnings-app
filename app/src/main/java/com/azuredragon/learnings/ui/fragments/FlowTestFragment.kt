@@ -24,6 +24,8 @@ class FlowTestFragment: Fragment(R.layout.fragment_flow_test) {
         flowTestViewModel.randomLiveData.observeSafely(getLifeCycleOwner()) {
             flowTestBinding.data = it
         }
+
+        flowTestViewModel.retryLiveData.observeSafely(getLifeCycleOwner()) { /* no-op */ }
     }
 
     companion object {
