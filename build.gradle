@@ -38,6 +38,8 @@ buildscript {
         junitVersion = '4.13'
         espressoVersion = '3.2.0'
         coreTestingVersion = '2.0.0'
+
+        workVersion = '2.3.4'
     }
 
     repositories {

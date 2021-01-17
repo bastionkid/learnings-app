@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/flowTestFragment">
+    app:startDestination="@id/surfaceViewTestFragment">
 
     <fragment
         android:id="@+id/lottieFragment"
@@ -48,5 +48,10 @@
         android:id="@+id/flowTestFragment"
         android:name="com.azuredragon.learnings.ui.fragments.FlowTestFragment"
         android:label="FlowTestFragment" />
+    <fragment
+        android:id="@+id/surfaceViewTestFragment"
+        android:name="com.azuredragon.learnings.ui.fragments.SurfaceViewTestFragment"
+        android:label="fragment_surface_view_test"
+        tools:layout="@layout/fragment_surface_view_test" />
 
 </navigation>

@@ -2,6 +2,9 @@ package com.azuredragon.learnings
 
 import android.app.Application
 import android.content.Context
+import androidx.lifecycle.ProcessLifecycleOwner
+import com.azuredragon.learnings.performance.logNativeHeapMemoryInfo
+import com.azuredragon.learnings.time.Clock
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
@@ -20,6 +23,10 @@ class LearningsApplication: Application() {
                     return super.createStackElementTag(element) + " : " + element.lineNumber
                 }
             })
+        }
+
+        Clock.everySecond.observe(ProcessLifecycleOwner.get()) {
+            logNativeHeapMemoryInfo("Bitmap Recycling")
         }
     }
 
