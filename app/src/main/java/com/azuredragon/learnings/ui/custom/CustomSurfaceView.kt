@@ -30,7 +30,7 @@ class CustomSurfaceView @JvmOverloads constructor(context: Context, attrs: Attri
             if (holder.surface.isValid) {
                 val bitmap = BitmapFactory.decodeResource(context.resources, resources[index])
 
-                val canvas = holder.lockCanvas();
+                val canvas = holder.lockCanvas()
 
                 canvas.save()
                 canvas.drawBitmap(bitmap, null, Rect(0, 0, 120.dpToPx(context), 120.dpToPx(context)), null)
