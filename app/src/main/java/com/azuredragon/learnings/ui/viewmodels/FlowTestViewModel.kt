@@ -1,4 +1,4 @@
-package com.azuredragon.learnings.ui.fragments
+package com.azuredragon.learnings.ui.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
