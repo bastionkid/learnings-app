@@ -17,6 +17,7 @@
             android:valueTo="100.0"
             android:value="20.0"
             android:stepSize="2.0"
+            app:labelBehavior="gone"
             app:trackColorActive="#666666"
             app:trackColorInactive="#19666666"
             app:thumbColor="#333333"
