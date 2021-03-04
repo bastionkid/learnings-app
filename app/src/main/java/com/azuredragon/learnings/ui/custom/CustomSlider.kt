@@ -15,9 +15,7 @@ class CustomSlider @JvmOverloads constructor(context: Context, attrs: AttributeS
             labelsRef?.isAccessible = true
             val labels = labelsRef?.get(this) as? List<TooltipDrawable>
             labels?.forEach { label ->
-                context?.let { context ->
-                    label.setStroke(1.dpToPx(context).toFloat(), Color.parseColor("#CCCCCC"))
-                }
+                label.setStroke(1.dpToPx(context).toFloat(), Color.parseColor("#CCCCCC"))
             }
         } catch (e: NoSuchFieldException) {
             e.printStackTrace()

@@ -27,8 +27,7 @@ class FlowTestViewModel: ViewModel() {
     @ExperimentalCoroutinesApi
     val randomLiveData: LiveData<Int> = randomFlow.asLiveData()
 
-    @ExperimentalCoroutinesApi
-    val retryFlow: Flow<Unit> = flow {
+    private val retryFlow: Flow<Unit> = flow {
         for (i in 1..10) {
             Timber.d("retryFlow i = $i")
             delay(1000)
@@ -45,7 +44,6 @@ class FlowTestViewModel: ViewModel() {
         Timber.d("Closing retryFlow after 3 retries")
     }
 
-    @ExperimentalCoroutinesApi
     val retryLiveData: LiveData<Unit> = retryFlow.asLiveData()
 
 }
