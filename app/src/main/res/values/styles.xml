@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SliderTooltipStyle" parent="@style/Widget.MaterialComponents.Tooltip" >
+        <item name="android:textAppearance">@style/TextAppearance.SliderTooltipStyle</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
+
+    <style name="TextAppearance.SliderTooltipStyle" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>
