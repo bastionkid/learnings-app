@@ -44,7 +44,7 @@ class CustomSlider @JvmOverloads constructor(
                         normalizeValueRef?.isAccessible = true
 
                         val left = (trackSidePadding + (((normalizeValueRef?.invoke(this, value) as? Float) ?: 0f) * trackWidth).toInt() - label.intrinsicWidth / 2)
-                        val top = (trackTop ?: 0) - ((labelPadding ?: 0) + thumbRadius)
+                        val top = (trackTop ?: 0) - ((labelPadding ?: 0) + (thumbRadius * 2.5).toInt())
                         label.setBounds(left, top - label.intrinsicHeight, left + label.intrinsicWidth, top)
 
                         // Calculate the difference between the bounds of this view and the bounds of the root view to
