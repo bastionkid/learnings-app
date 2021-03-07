@@ -1,6 +1,7 @@
 package com.azuredragon.lintrules.detectors
 
 import com.android.SdkConstants
+import com.android.resources.ResourceFolderType
 import com.android.tools.lint.detector.api.*
 import com.android.utils.XmlUtils
 import org.w3c.dom.Element
@@ -16,14 +17,19 @@ class InvalidVectorDrawableDetector: ResourceXmlDetector() {
 
     override fun visitElement(context: XmlContext, element: Element) {
         if (getMinSdk(context) < 24) {
-            XmlUtils.getSubTagsAsList(element).forEach { childElement ->
-                if (SdkConstants.TAG_GRADIENT == childElement.tagName) {
-                    context.report(
-                        issue = ISSUE,
-                        location = context.getLocation(childElement),
-                        message = REPORT_MESSAGE,
-                        quickfixData = null
-                    )
+            val folderType = context.resourceFolderType
+            if (folderType != ResourceFolderType.LAYOUT) {
+                if (folderType == ResourceFolderType.DRAWABLE) {
+                    XmlUtils.getSubTagsAsList(element).forEach { childElement ->
+                        if (SdkConstants.TAG_GRADIENT == childElement.tagName) {
+                            context.report(
+                                issue = ISSUE,
+                                location = context.getLocation(childElement),
+                                message = REPORT_MESSAGE,
+                                quickfixData = null
+                            )
+                        }
+                    }
                 }
             }
         }
