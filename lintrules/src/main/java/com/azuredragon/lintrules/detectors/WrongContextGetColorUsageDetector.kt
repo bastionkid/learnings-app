@@ -29,7 +29,13 @@ class WrongContextGetColorUsageDetector: LayoutDetector() {
 
         if (getMinSdk(context) < 23) {
             if (attribute.value.contains("context.getColor")) {
-                context.report(ISSUE, attribute, context.getLocation(attribute), REPORT_MESSAGE, getQuickfixData())
+                context.report(
+                    issue = ISSUE,
+                    scope = attribute,
+                    location = context.getLocation(attribute),
+                    message = REPORT_MESSAGE,
+                    quickfixData = getQuickfixData()
+                )
             }
         }
     }

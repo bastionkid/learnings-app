@@ -26,10 +26,10 @@ class IncompleteTodoScanner(private val context: JavaContext): UElementHandler()
     @Suppress("UnstableApiUsage")
     private fun reportUsage(context: JavaContext, comment: UComment) {
         context.report(
-                IncompleteTodoDetector.ISSUE,
-                context.getLocation(comment),
-                IncompleteTodoDetector.REPORT_MESSAGE,
-                quickfixData = getQuickfixData()
+            issue = IncompleteTodoDetector.ISSUE,
+            location = context.getLocation(comment),
+            message = IncompleteTodoDetector.REPORT_MESSAGE,
+            quickfixData = getQuickfixData()
         )
     }
 
@@ -40,12 +40,12 @@ class IncompleteTodoScanner(private val context: JavaContext): UElementHandler()
 
         LintFix.create().replace().build()
         return LintFix.create()
-                .replace()
-                .pattern(regex.pattern)
-                .with(newText)
-                .robot(true)
-                .independent(true)
-                .build()
+            .replace()
+            .pattern(regex.pattern)
+            .with(newText)
+            .robot(true)
+            .independent(true)
+            .build()
     }
 
     private fun isValidTodo(commentText: String): Boolean {
