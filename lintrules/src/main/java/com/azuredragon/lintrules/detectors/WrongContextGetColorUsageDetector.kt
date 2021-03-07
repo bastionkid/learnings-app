@@ -27,8 +27,18 @@ class WrongContextGetColorUsageDetector: LayoutDetector() {
 
         //TODO Author:akashkhunt Date:7/3/21 What Needs to be Done:If possible add a minSdkVersion check here
         if (attribute.value.contains("context.getColor")) {
-            context.report(ISSUE, attribute, context.getLocation(attribute), REPORT_MESSAGE)
+            context.report(ISSUE, attribute, context.getLocation(attribute), REPORT_MESSAGE, getQuickfixData())
         }
+    }
+
+    private fun getQuickfixData(): LintFix {
+        return LintFix.create()
+            .replace()
+            .text("context.getColor(")
+            .with("ContextCompat.getColor(context, ")
+            .robot(true)
+            .independent(true)
+            .build()
     }
 
     companion object {

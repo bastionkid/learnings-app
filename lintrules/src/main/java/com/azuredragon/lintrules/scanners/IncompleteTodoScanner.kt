@@ -29,11 +29,11 @@ class IncompleteTodoScanner(private val context: JavaContext): UElementHandler()
                 IncompleteTodoDetector.ISSUE,
                 context.getLocation(comment),
                 IncompleteTodoDetector.REPORT_MESSAGE,
-                quickfixData = getQuickFixData()
+                quickfixData = getQuickfixData()
         )
     }
 
-    private fun getQuickFixData(): LintFix {
+    private fun getQuickfixData(): LintFix {
         val regex = Regex("TODO|todo")
 
         val newText = "TODO Author:${System.getProperty("user.name")} Date:${LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yy"))} What Needs to be Done:"
