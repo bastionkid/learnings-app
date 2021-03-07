@@ -3,8 +3,8 @@ package com.azuredragon.lintrules.detectors
 import com.android.SdkConstants
 import com.android.resources.ResourceFolderType
 import com.android.tools.lint.detector.api.*
-import com.android.utils.XmlUtils
 import org.w3c.dom.Element
+import org.w3c.dom.Node
 
 @Suppress("UnstableApiUsage")
 class InvalidVectorDrawableDetector: ResourceXmlDetector() {
@@ -12,7 +12,7 @@ class InvalidVectorDrawableDetector: ResourceXmlDetector() {
     private var cachedMinApi = -1
 
     override fun getApplicableElements(): Collection<String> {
-        return listOf(SdkConstants.TAG_VECTOR)
+        return listOf(SdkConstants.TAG_GRADIENT)
     }
 
     override fun visitElement(context: XmlContext, element: Element) {
@@ -20,18 +20,24 @@ class InvalidVectorDrawableDetector: ResourceXmlDetector() {
             val folderType = context.resourceFolderType
             if (folderType != ResourceFolderType.LAYOUT) {
                 if (folderType == ResourceFolderType.DRAWABLE) {
-                    XmlUtils.getSubTagsAsList(element).forEach { childElement ->
-                        if (SdkConstants.TAG_GRADIENT == childElement.tagName) {
-                            context.report(
-                                issue = ISSUE,
-                                location = context.getLocation(childElement),
-                                message = REPORT_MESSAGE,
-                                quickfixData = null
-                            )
-                        }
+                    if (getVectorParentNodeOrCurrent(element.parentNode).nodeName == SdkConstants.TAG_VECTOR) {
+                        context.report(
+                            issue = ISSUE,
+                            location = context.getLocation(element),
+                            message = REPORT_MESSAGE,
+                            quickfixData = null
+                        )
                     }
                 }
             }
+        }
+    }
+
+    private fun getVectorParentNodeOrCurrent(node: Node): Node {
+        return when {
+            node.parentNode.nodeName == SdkConstants.TAG_VECTOR -> node.parentNode
+            node.parentNode == null -> node
+            else -> getVectorParentNodeOrCurrent(node.parentNode)
         }
     }
 
