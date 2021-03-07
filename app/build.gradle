@@ -38,9 +38,12 @@ android {
     }
 
     lintOptions {
+        htmlReport true
+        htmlOutput file("lint-report.html")
         disable 'GoogleAppIndexingWarning'
         textReport true
         textOutput "stdout"
+        abortOnError true
     }
 
     kotlinOptions {
@@ -53,6 +56,8 @@ kapt {
 }
 
 dependencies {
+    lintChecks project(':lintrules')
+
     //androidx
     implementation "androidx.core:core-ktx:$ktxVersion"
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
