@@ -28,7 +28,7 @@ class IncompleteTodoDetector: Detector(), SourceCodeScanner {
                 explanation = "Please setup a Live Template for ease of usage. Please ask someone from the GetMega Android team to help you out",
                 category = Category.CORRECTNESS,
                 priority = 5,
-                severity = Severity.WARNING,
+                severity = Severity.ERROR,
                 implementation = IMPLEMENTATION
         )
     }

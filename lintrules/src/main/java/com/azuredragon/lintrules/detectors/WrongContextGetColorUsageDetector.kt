@@ -1,7 +1,6 @@
 package com.azuredragon.lintrules.detectors
 
 import com.android.SdkConstants
-import com.android.tools.lint.checks.AllCapsDetector
 import com.android.tools.lint.detector.api.*
 import org.w3c.dom.Attr
 
@@ -28,7 +27,7 @@ class WrongContextGetColorUsageDetector: LayoutDetector() {
 
         //TODO Author:akashkhunt Date:7/3/21 What Needs to be Done:If possible add a minSdkVersion check here
         if (attribute.value.contains("context.getColor")) {
-            context.report(AllCapsDetector.ISSUE, attribute, context.getLocation(attribute), REPORT_MESSAGE)
+            context.report(ISSUE, attribute, context.getLocation(attribute), REPORT_MESSAGE)
         }
     }
 
@@ -45,7 +44,7 @@ class WrongContextGetColorUsageDetector: LayoutDetector() {
                 explanation = "Please use ContextCompat.getColor(context, colorRes) to resolve colors for backward compatibility.",
                 category = Category.CORRECTNESS,
                 priority = 10,
-                severity = Severity.ERROR,
+                severity = Severity.FATAL,
                 implementation = IMPLEMENTATION
         )
     }
