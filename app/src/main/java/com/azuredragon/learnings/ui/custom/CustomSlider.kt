@@ -19,15 +19,17 @@ class CustomSlider @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : Slider(context, attrs, defStyleAttr) {
 
-    private var labels: List<TooltipDrawable>? = null
-
-    init {
+    private val labels: List<TooltipDrawable>? by lazy {
         val labelsRef = Slider::class.java.superclass?.getDeclaredAccessibleField("labels")
-        labels = labelsRef?.get(this) as? List<TooltipDrawable>
+        val labels = labelsRef?.get(this) as? List<TooltipDrawable>
         labels?.forEach { label ->
             label.setStroke(1.dpToPx(context).toFloat(), Color.parseColor("#CCCCCC"))
         }
 
+        labels
+    }
+
+    init {
         addOnChangeListener { _, _, _ ->
             updateSliderTooltip()
         }
@@ -36,7 +38,7 @@ class CustomSlider @JvmOverloads constructor(
     @SuppressLint("RestrictedApi")
     private fun updateSliderTooltip() {
         labels?.firstOrNull()?.let { label ->
-            label.text = "\u20B9 $value"
+            label.text = "₹ $value"
 
             val trackTopRef = Slider::class.java.superclass?.getDeclaredAccessibleField("trackTop")
             val trackTop = trackTopRef?.get(this) as? Int
