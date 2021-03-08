@@ -13,7 +13,6 @@ import com.google.android.material.internal.ViewUtils
 import com.google.android.material.slider.Slider
 import com.google.android.material.tooltip.TooltipDrawable
 
-@SuppressLint("RestrictedApi")
 class CustomSlider @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -29,11 +28,12 @@ class CustomSlider @JvmOverloads constructor(
             label.setStroke(1.dpToPx(context).toFloat(), Color.parseColor("#CCCCCC"))
         }
 
-        addOnChangeListener { _, value, _ ->
+        addOnChangeListener { _, _, _ ->
             updateSliderTooltip()
         }
     }
 
+    @SuppressLint("RestrictedApi")
     private fun updateSliderTooltip() {
         labels?.firstOrNull()?.let { label ->
             label.text = "\u20B9 $value"
