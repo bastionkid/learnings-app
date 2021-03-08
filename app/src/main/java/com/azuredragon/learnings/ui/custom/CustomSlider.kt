@@ -22,9 +22,7 @@ class CustomSlider @JvmOverloads constructor(
     private val labels: List<TooltipDrawable>? by lazy {
         val labelsRef = Slider::class.java.superclass?.getDeclaredAccessibleField("labels")
         val labels = labelsRef?.get(this) as? List<TooltipDrawable>
-        labels?.forEach { label ->
-            label.setStroke(1.dpToPx(context).toFloat(), Color.parseColor("#CCCCCC"))
-        }
+        labels?.forEach { setStrokeWidthAndColor(it) }
 
         labels
     }
@@ -38,6 +36,10 @@ class CustomSlider @JvmOverloads constructor(
     @SuppressLint("RestrictedApi")
     private fun updateSliderTooltip() {
         labels?.firstOrNull()?.let { label ->
+            if (label.strokeWidth == 0f) {
+                setStrokeWidthAndColor(label)
+            }
+
             label.text = "₹ $value"
 
             val trackTopRef = Slider::class.java.superclass?.getDeclaredAccessibleField("trackTop")
@@ -63,5 +65,9 @@ class CustomSlider @JvmOverloads constructor(
 
             ViewUtils.getContentViewOverlay(this)?.add(label)
         }
+    }
+
+    private fun setStrokeWidthAndColor(label: TooltipDrawable) {
+        label.setStroke(1.dpToPx(context).toFloat(), Color.parseColor("#CCCCCC"))
     }
 }
