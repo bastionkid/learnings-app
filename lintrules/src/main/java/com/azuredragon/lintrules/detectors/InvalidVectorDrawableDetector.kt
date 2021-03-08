@@ -55,8 +55,6 @@ class InvalidVectorDrawableDetector: ResourceXmlDetector() {
     }
 
     companion object {
-        private val supportedUriSet = setOf(SdkConstants.ANDROID_URI, SdkConstants.AUTO_URI)
-
         private val IMPLEMENTATION = Implementation(InvalidVectorDrawableDetector::class.java, Scope.ALL_RESOURCES_SCOPE, Scope.RESOURCE_FILE_SCOPE)
 
         private const val REPORT_MESSAGE = "Usage of <gradient> is prohibited in VectorDrawables as it leads to crash on pre-Nougat i.e. < API 24 devices"
