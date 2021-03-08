@@ -3,10 +3,10 @@ package com.azuredragon.learnings.ui.fragments
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import com.azuredragon.learnings.R
 import com.azuredragon.learnings.databinding.FragmentConstraintLayoutLayerBinding
 import com.azuredragon.learnings.ktxextensions.dataBindingsLazy
+import com.azuredragon.learnings.ktxextensions.viewLifeCycleScope
 
 class ConstraintLayoutLayerFragment: Fragment(R.layout.fragment_constraint_layout_layer) {
 
@@ -15,7 +15,7 @@ class ConstraintLayoutLayerFragment: Fragment(R.layout.fragment_constraint_layou
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        lifecycleScope.launchWhenResumed {
+        viewLifeCycleScope?.launchWhenResumed {
             constraintLayoutLayerBinding.layerButtons.scaleX = 1.5f
         }
     }

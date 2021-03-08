@@ -4,10 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import com.azuredragon.learnings.R
 import com.azuredragon.learnings.databinding.FragmentExceptionThrowAndCatchBinding
 import com.azuredragon.learnings.ktxextensions.dataBindingsLazy
+import com.azuredragon.learnings.ktxextensions.viewLifeCycleScope
 import com.azuredragon.learnings.ui.utils.UncaughtExceptionHandler
 import kotlinx.coroutines.delay
 
@@ -20,7 +20,7 @@ class ExceptionThrowAndCatchFragment: Fragment(R.layout.fragment_exception_throw
 
         exceptionThrowAndCatchBinding.exceptionText = getString(R.string.label_throwing_exception)
 
-        lifecycleScope.launchWhenResumed {
+        viewLifeCycleScope?.launchWhenResumed {
             delay(5000)
 
             throw Exception()
