@@ -38,7 +38,6 @@ class IncompleteTodoScanner(private val context: JavaContext): UElementHandler()
 
         val newText = "TODO Author:${System.getProperty("user.name")} Date:${LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yy"))} What Needs to be Done:"
 
-        LintFix.create().replace().build()
         return LintFix.create()
             .replace()
             .pattern(regex.pattern)

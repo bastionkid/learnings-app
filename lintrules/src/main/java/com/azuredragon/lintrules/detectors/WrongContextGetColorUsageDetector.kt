@@ -64,7 +64,7 @@ class WrongContextGetColorUsageDetector: LayoutDetector() {
     }
 
     companion object {
-        private val supportedUriSet = setOf(SdkConstants.ANDROID_URI, SdkConstants.AUTO_URI)
+        private val supportedUriSet = setOf(SdkConstants.ANDROID_URI, SdkConstants.AUTO_URI, SdkConstants.TOOLS_URI)
 
         private val IMPLEMENTATION = Implementation(WrongContextGetColorUsageDetector::class.java, Scope.ALL_RESOURCES_SCOPE, Scope.RESOURCE_FILE_SCOPE)
 
