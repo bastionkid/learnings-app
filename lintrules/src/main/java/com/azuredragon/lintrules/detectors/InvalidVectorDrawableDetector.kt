@@ -18,25 +18,23 @@ class InvalidVectorDrawableDetector: ResourceXmlDetector() {
     override fun visitElement(context: XmlContext, element: Element) {
         if (getMinSdk(context) < 24) {
             val folderType = context.resourceFolderType
-            if (folderType != ResourceFolderType.LAYOUT) {
-                if (folderType == ResourceFolderType.DRAWABLE) {
-                    if (getVectorParentNodeOrCurrent(element.parentNode).nodeName == SdkConstants.TAG_VECTOR) {
-                        context.report(
-                            issue = ISSUE,
-                            location = context.getLocation(element),
-                            message = REPORT_MESSAGE,
-                            quickfixData = null
-                        )
-                    }
+            if (folderType == ResourceFolderType.DRAWABLE) {
+                if (getVectorParentNodeOrCurrent(element.parentNode)?.nodeName == SdkConstants.TAG_VECTOR) {
+                    context.report(
+                        issue = ISSUE,
+                        location = context.getLocation(element),
+                        message = REPORT_MESSAGE,
+                        quickfixData = null
+                    )
                 }
             }
         }
     }
 
-    private fun getVectorParentNodeOrCurrent(node: Node): Node {
+    private fun getVectorParentNodeOrCurrent(node: Node?): Node? {
         return when {
-            node.parentNode.nodeName == SdkConstants.TAG_VECTOR -> node.parentNode
-            node.parentNode == null -> node
+            node?.parentNode?.nodeName == SdkConstants.TAG_VECTOR -> node.parentNode
+            node?.parentNode == null -> node
             else -> getVectorParentNodeOrCurrent(node.parentNode)
         }
     }
