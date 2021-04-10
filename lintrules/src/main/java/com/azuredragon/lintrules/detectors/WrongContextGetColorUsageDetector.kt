@@ -72,8 +72,8 @@ class WrongContextGetColorUsageDetector: LayoutDetector() {
 
         val ISSUE = Issue.create(
             id = "WrongContextGetColorUsage",
-            briefDescription = "Usage of context.getColor(colorRes) is prohibited as it leads to crash on pre-Marshmallow i.e. < API 23 devices",
-            explanation = "Please use ContextCompat.getColor(context, colorRes) to resolve colors for backward compatibility.",
+            briefDescription = "Please use ContextCompat.getColor(context, colorRes) to resolve colors for backward compatibility.",
+            explanation = REPORT_MESSAGE,
             category = Category.CORRECTNESS,
             priority = 10,
             severity = Severity.FATAL,

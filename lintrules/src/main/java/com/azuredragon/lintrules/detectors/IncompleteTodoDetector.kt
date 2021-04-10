@@ -20,16 +20,16 @@ class IncompleteTodoDetector: Detector(), SourceCodeScanner {
     companion object {
         private val IMPLEMENTATION = Implementation(IncompleteTodoDetector::class.java, Scope.JAVA_FILE_SCOPE)
 
-        const val REPORT_MESSAGE = "Please use the well defined TODO format with Author, Date & What Needs to be Done data"
+        const val REPORT_MESSAGE = "Please setup a Live Template for ease of usage. Please ask someone from the GetMega Android team to help you out"
 
         val ISSUE = Issue.create(
-                id = "InvalidTodo",
-                briefDescription = "Please use the well defined TODO format with Author, Date & What Needs to be Done data",
-                explanation = "Please setup a Live Template for ease of usage. Please ask someone from the GetMega Android team to help you out",
-                category = Category.CORRECTNESS,
-                priority = 5,
-                severity = Severity.ERROR,
-                implementation = IMPLEMENTATION
+            id = "IncompleteTodo",
+            briefDescription = "Please use the well defined TODO format with Author, Date & What Needs to be Done data",
+            explanation = REPORT_MESSAGE,
+            category = Category.CORRECTNESS,
+            priority = 5,
+            severity = Severity.ERROR,
+            implementation = IMPLEMENTATION
         )
     }
 }

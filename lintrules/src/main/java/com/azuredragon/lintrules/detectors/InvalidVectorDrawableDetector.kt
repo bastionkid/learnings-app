@@ -59,8 +59,8 @@ class InvalidVectorDrawableDetector: ResourceXmlDetector() {
 
         val ISSUE = Issue.create(
             id = "InvalidVectorDrawable",
-            briefDescription = "Usage of <gradient> is prohibited in VectorDrawables as it leads to crash on pre-Nougat i.e. < API 24 devices",
-            explanation = "Please use webp resource instead of VectorDrawable for this resource",
+            briefDescription = "Please use webp resource instead of VectorDrawable for this resource",
+            explanation = REPORT_MESSAGE,
             category = Category.CORRECTNESS,
             priority = 10,
             severity = Severity.FATAL,

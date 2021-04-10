@@ -36,9 +36,9 @@ class ConstraintLayoutChildIssuesDetector: LayoutDetector() {
         private val IMPLEMENTATION = Implementation(ConstraintLayoutChildIssuesDetector::class.java, Scope.RESOURCE_FILE_SCOPE)
 
         val ISSUE = Issue.create(
-            id = "TextViewHardCodedAttributes",
+            id = "ConstraintLayoutChildIssues",
             briefDescription = "Use 0dp with constraints for layout_width and layout_height.",
-            explanation = "It's recommended to use 0dp with constraints rather then using match_parent for layout_width & layout_height.",
+            explanation = REPORT_MESSAGE,
             category = Category.CORRECTNESS,
             priority = 5,
             severity = Severity.ERROR,
