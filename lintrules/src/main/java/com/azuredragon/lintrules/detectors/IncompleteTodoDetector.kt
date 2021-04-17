@@ -20,7 +20,7 @@ class IncompleteTodoDetector: Detector(), SourceCodeScanner {
     companion object {
         private val IMPLEMENTATION = Implementation(IncompleteTodoDetector::class.java, Scope.JAVA_FILE_SCOPE)
 
-        const val REPORT_MESSAGE = "Please setup a Live Template for ease of usage. Please ask someone from the GetMega Android team to help you out"
+        const val REPORT_MESSAGE = "Please setup a Live Template for ease of usage."
 
         val ISSUE = Issue.create(
             id = "IncompleteTodo",
