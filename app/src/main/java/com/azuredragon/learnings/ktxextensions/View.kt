@@ -2,6 +2,7 @@ package com.azuredragon.learnings.ktxextensions
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import androidx.vectordrawable.graphics.drawable.SeekableAnimatedVectorDrawable
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 
@@ -114,5 +115,15 @@ suspend fun RecyclerView.awaitTillScrollEnd() {
         }
 
         addOnScrollListener(scrollListener)
+    }
+}
+
+fun View.setAndStartAvdBackgroundAnimation(drawableRes: Int) {
+    val animatedVectorDrawable = SeekableAnimatedVectorDrawable.create(context, drawableRes)
+
+    animatedVectorDrawable?.let {
+        background = it
+
+        animatedVectorDrawable.start()
     }
 }

@@ -16,13 +16,13 @@ class CustomSurfaceView @JvmOverloads constructor(context: Context, attrs: Attri
     private val coroutineScope = CoroutineScope(Dispatchers.Default)
 
     private val resources = intArrayOf(
-        R.drawable.aadhar,
-        R.drawable.aadhar_back,
-        R.drawable.passport,
-        R.drawable.pan_card,
-        R.drawable.driving_license,
-        R.drawable.voter_id,
-        R.drawable.voter_id_back
+        R.drawable.ic_aadhar,
+        R.drawable.ic_aadhar_back,
+        R.drawable.ic_passport,
+        R.drawable.ic_pan_card,
+        R.drawable.ic_driving_license,
+        R.drawable.ic_voter_id,
+        R.drawable.ic_voter_id_back
     )
 
     fun drawSomething(index: Int = 0) {
