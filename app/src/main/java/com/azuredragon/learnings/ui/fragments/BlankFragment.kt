@@ -27,7 +27,7 @@ class BlankFragment: Fragment(R.layout.fragment_blank) {
             blankBinding.slider.value = 50f
         }
 
-        blankBinding.ivProgress.setAndStartAvdBackgroundAnimation(R.drawable.`avd_horizontal_progress.xml`)
+        blankBinding.ivProgress.setAndStartAvdBackgroundAnimation(R.drawable.avd_horizontal_progress)
     }
 
     companion object {
