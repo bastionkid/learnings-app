@@ -1,10 +1,14 @@
 package com.azuredragon.learnings.ktxextensions
 
 import android.view.View
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.vectordrawable.graphics.drawable.SeekableAnimatedVectorDrawable
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.suspendCancellableCoroutine
+import timber.log.Timber
 
 fun View.visible() {
     visibility = View.VISIBLE
@@ -122,8 +126,40 @@ fun View.setAndStartAvdBackgroundAnimation(drawableRes: Int) {
     val animatedVectorDrawable = SeekableAnimatedVectorDrawable.create(context, drawableRes)
 
     animatedVectorDrawable?.let {
-        background = it
+        background = animatedVectorDrawable
 
         animatedVectorDrawable.start()
     }
+}
+
+fun View.setAndStartAvdBackgroundAnimationWithRestart(drawableRes: Int, lifecycleScope: LifecycleCoroutineScope) {
+    val animatedVectorDrawable = SeekableAnimatedVectorDrawable.create(context, drawableRes)
+
+    animatedVectorDrawable?.let {
+        background = animatedVectorDrawable
+
+        animatedVectorDrawable.registerAnimationCallback(object: SeekableAnimatedVectorDrawable.AnimationCallback() {
+            override fun onAnimationEnd(drawable: SeekableAnimatedVectorDrawable) {
+                super.onAnimationEnd(drawable)
+
+                lifecycleScope.launchWhenResumed {
+                    Timber.d("setAndStartAvdBackgroundAnimationWithRestart start()")
+
+                    animatedVectorDrawable.start()
+                }
+            }
+        })
+
+        animatedVectorDrawable.start()
+    }
+}
+
+fun View.stopAvdBackgroundAnimation() {
+    (background as? SeekableAnimatedVectorDrawable)?.stop()
+}
+
+fun View.stopAvdBackgroundAnimationWithBg(@DrawableRes endAnimDrawable: Int) {
+    stopAvdBackgroundAnimation()
+
+    background = ContextCompat.getDrawable(context, endAnimDrawable)
 }
