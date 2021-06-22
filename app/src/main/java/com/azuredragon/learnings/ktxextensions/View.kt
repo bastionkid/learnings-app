@@ -122,7 +122,7 @@ suspend fun RecyclerView.awaitTillScrollEnd() {
     }
 }
 
-fun View.setAndStartAvdBackgroundAnimation(drawableRes: Int) {
+fun View.setAndStartAvdBgAnim(drawableRes: Int) {
     val animatedVectorDrawable = SeekableAnimatedVectorDrawable.create(context, drawableRes)
 
     animatedVectorDrawable?.let {
@@ -132,13 +132,17 @@ fun View.setAndStartAvdBackgroundAnimation(drawableRes: Int) {
     }
 }
 
-fun View.setAndStartAvdBackgroundAnimationWithRestart(drawableRes: Int, lifecycleScope: LifecycleCoroutineScope) {
+fun View.setAndStartAvdBgAnimWithRestart(
+    drawableRes: Int,
+    lifecycleScope: LifecycleCoroutineScope
+) {
     val animatedVectorDrawable = SeekableAnimatedVectorDrawable.create(context, drawableRes)
 
     animatedVectorDrawable?.let {
         background = animatedVectorDrawable
 
-        animatedVectorDrawable.registerAnimationCallback(object: SeekableAnimatedVectorDrawable.AnimationCallback() {
+        animatedVectorDrawable.registerAnimationCallback(object :
+            SeekableAnimatedVectorDrawable.AnimationCallback() {
             override fun onAnimationEnd(drawable: SeekableAnimatedVectorDrawable) {
                 super.onAnimationEnd(drawable)
 
@@ -154,12 +158,12 @@ fun View.setAndStartAvdBackgroundAnimationWithRestart(drawableRes: Int, lifecycl
     }
 }
 
-fun View.stopAvdBackgroundAnimation() {
+fun View.stopAvdBgAnim() {
     (background as? SeekableAnimatedVectorDrawable)?.stop()
 }
 
-fun View.stopAvdBackgroundAnimationWithBg(@DrawableRes endAnimDrawable: Int) {
-    stopAvdBackgroundAnimation()
+fun View.stopAvdBgAnimWithDrawable(@DrawableRes endAnimDrawable: Int) {
+    stopAvdBgAnim()
 
     background = ContextCompat.getDrawable(context, endAnimDrawable)
 }
