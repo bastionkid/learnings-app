@@ -1,5 +1,6 @@
 package com.azuredragon.learnings.ui.fragments
 
+import android.app.Fragment
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -28,6 +29,10 @@ class BlankFragment: Fragment(R.layout.fragment_blank) {
         }
 
         blankBinding.ivProgress.setAndStartAvdBackgroundAnimation(R.drawable.avd_horizontal_progress)
+
+        if(true){
+
+        }
     }
 
     companion object {
