@@ -28,14 +28,6 @@ class BlankFragment: Fragment(R.layout.fragment_blank) {
         }
 
         blankBinding.ivProgress.setAndStartAvdBackgroundAnimation(R.drawable.avd_horizontal_progress)
-
-        if (true) {
-
-        }
-
-        if (true) {
-
-        }
     }
 
     companion object {
