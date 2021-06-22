@@ -3,7 +3,6 @@ package com.azuredragon.learnings.ui.fragments
 import android.app.Fragment
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import com.azuredragon.learnings.R
 import com.azuredragon.learnings.databinding.FragmentBlankBinding
 import com.azuredragon.learnings.ktxextensions.awaitTillNextLayout
@@ -30,7 +29,11 @@ class BlankFragment: Fragment(R.layout.fragment_blank) {
 
         blankBinding.ivProgress.setAndStartAvdBackgroundAnimation(R.drawable.avd_horizontal_progress)
 
-        if(true){
+        if (true) {
+
+        }
+
+        if (true) {
 
         }
     }
