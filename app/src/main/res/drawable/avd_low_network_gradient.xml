@@ -1,0 +1,71 @@
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:name="avd_low_network_gradient"
+            android:width="560dp"
+            android:height="100dp"
+            android:viewportWidth="560"
+            android:viewportHeight="100">
+            <group android:name="group">
+                <path
+                    android:name="path"
+                    android:pathData="M 0 -24 L 560 -24 L 560 56 L 0 56 Z">
+                    <aapt:attr name="android:fillColor">
+                        <gradient
+                            android:centerColor="#40DF3F57"
+                            android:endColor="#00DF3F57"
+                            android:endX="0"
+                            android:endY="56"
+                            android:startColor="#80DF3F57"
+                            android:startX="0"
+                            android:startY="-24"
+                            android:type="linear" />
+                    </aapt:attr>
+                </path>
+            </group>
+        </vector>
+    </aapt:attr>
+    <target android:name="path">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="800"
+                    android:interpolator="@android:anim/decelerate_interpolator"
+                    android:propertyName="fillAlpha"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="800"
+                    android:interpolator="@android:anim/decelerate_interpolator"
+                    android:propertyName="fillAlpha"
+                    android:startOffset="800"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="group">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="800"
+                    android:interpolator="@android:anim/decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="24"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="800"
+                    android:interpolator="@android:anim/decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:startOffset="800"
+                    android:valueFrom="24"
+                    android:valueTo="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>
