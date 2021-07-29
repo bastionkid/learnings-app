@@ -61,7 +61,7 @@ dependencies {
     //androidx
     implementation "androidx.core:core-ktx:$ktxVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-alpha02"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
     implementation "androidx.savedstate:savedstate:$savedStateVersion"
     implementation "com.google.android.material:material:$materialVersion"

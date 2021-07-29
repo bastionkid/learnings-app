@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/blankFragment">
+    app:startDestination="@id/flowTestFragment">
 
     <fragment
         android:id="@+id/lottieFragment"
         android:name="com.azuredragon.learnings.ui.fragments.LottieFragment"
         android:label="fragment_lottie"
-        tools:layout="@layout/fragment_lottie" >
+        tools:layout="@layout/fragment_lottie">
 
         <action
             android:id="@+id/action_lottieFragment_to_constraintLayoutLayerFragment"

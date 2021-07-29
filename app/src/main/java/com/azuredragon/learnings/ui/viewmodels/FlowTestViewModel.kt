@@ -3,6 +3,7 @@ package com.azuredragon.learnings.ui.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
+import com.azuredragon.learnings.api.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.delay
@@ -18,7 +19,11 @@ class FlowTestViewModel: ViewModel() {
         while (isActive) {
             delay(1000)
 
-            offer(Random.nextInt())
+            val offeredValue = Random.nextInt()
+
+            Timber.d("randomFlow offeredValue: $offeredValue")
+
+            trySend(offeredValue)
         }
 
         awaitClose()
@@ -29,7 +34,7 @@ class FlowTestViewModel: ViewModel() {
 
     private val retryFlow: Flow<Unit> = flow {
         for (i in 1..10) {
-            Timber.d("retryFlow i = $i")
+            Timber.d("retryFlow i: $i")
             delay(1000)
 
             if (i % 3 == 0) {
@@ -39,6 +44,8 @@ class FlowTestViewModel: ViewModel() {
             }
         }
     }.retryWhen { cause, attempt ->
+        Timber.d("retry attempt: $attempt")
+
         return@retryWhen cause is IllegalStateException && attempt < 3
     }.catch {
         Timber.d("Closing retryFlow after 3 retries")

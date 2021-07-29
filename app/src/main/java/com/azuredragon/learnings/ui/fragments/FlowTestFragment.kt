@@ -40,9 +40,7 @@ class FlowTestFragment: Fragment(R.layout.fragment_flow_test) {
             flowTestBinding.tvGradientSpan.text = spannable
         }
 
-        flowTestViewModel.randomLiveData.observeSafely(getLifeCycleOwner()) {
-            flowTestBinding.data = it
-        }
+        flowTestViewModel.randomLiveData.observeSafely(getLifeCycleOwner()) { /* no-op */ }
 
         flowTestViewModel.retryLiveData.observeSafely(getLifeCycleOwner()) { /* no-op */ }
     }
