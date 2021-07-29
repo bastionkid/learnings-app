@@ -1,11 +1,20 @@
 package com.azuredragon.learnings.ktxextensions
 
 import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.RelativeLayout
 import androidx.annotation.DrawableRes
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.doOnNextLayout
+import androidx.core.view.doOnPreDraw
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.vectordrawable.graphics.drawable.SeekableAnimatedVectorDrawable
+import com.azuredragon.learnings.R
+import jp.wasabeef.blurry.Blurry
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 import timber.log.Timber
@@ -166,4 +175,57 @@ fun View.stopAvdBgAnimWithDrawable(@DrawableRes endAnimDrawable: Int) {
     stopAvdBgAnim()
 
     background = ContextCompat.getDrawable(context, endAnimDrawable)
+}
+
+/**
+ * Helps in applying Blurred background to the [ImageView] on which this function is invoked
+ *
+ * @param backgroundView the [View] which will be used to create a Blurred Bitmap
+ * @param radius used as an argument to [Blurry]
+ * @param sampling used as an argument to [Blurry]
+ */
+fun ImageView.applyBlurredBackground(backgroundView: View, radius: Int = 10, sampling: Int = 2, fadeInDurationInMillis: Long = 0) {
+    scaleType = ImageView.ScaleType.CENTER_CROP
+
+    if (backgroundView.background == null) backgroundView.setBackgroundColor(ContextCompat.getColor(context, R.color.teal_700))
+
+    backgroundView.doOnPreDraw {
+        Blurry.with(context)
+            .radius(radius)
+            .sampling(sampling)
+            .color(ContextCompat.getColor(context, R.color.teal_700))
+            .capture(backgroundView)
+            .into(this)
+    }
+
+    doOnNextLayout {
+        if (fadeInDurationInMillis > 0L) {
+            animate().alpha(1f).setDuration(fadeInDurationInMillis).start()
+        }
+    }
+}
+
+/**
+ * Helps in applying Blurred background to the [ViewGroup] on which this function is invoked
+ *
+ * Currently applyBlurredBackground() is only supported to [FrameLayout], [RelativeLayout] & [ConstraintLayout].
+ *
+ * @param backgroundView the [View] which will be used to create a Blurred Bitmap
+ * @param radius used as an argument to [Blurry]
+ * @param sampling used as an argument to [Blurry]
+ *
+ * @throws RuntimeException when this function is invoked on an invalid [ViewGroup]
+ */
+fun ViewGroup.applyBlurredBackground(backgroundView: View, radius: Int = 10, sampling: Int = 2, fadeInDurationInMillis: Long = 0) {
+    val imageView = ImageView(context).apply {
+        id = View.generateViewId()
+        alpha = if (fadeInDurationInMillis == 0L) 1f else 0f
+    }
+
+    when (this) {
+        is FrameLayout, is RelativeLayout, is ConstraintLayout -> addView(imageView, 0)
+        else -> throw RuntimeException("Currently applyBlurredBackground() is only supported for FrameLayout, RelativeLayout & ConstraintLayout.")
+    }
+
+    imageView.applyBlurredBackground(backgroundView, radius, sampling, fadeInDurationInMillis)
 }
