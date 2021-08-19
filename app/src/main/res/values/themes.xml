@@ -12,5 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="shapeAppearanceSmallComponent">@style/Theme.LearningsApp.SmallShape</item>
+        <item name="shapeAppearanceMediumComponent">@style/Theme.LearningsApp.MediumShape</item>
     </style>
 </resources>
