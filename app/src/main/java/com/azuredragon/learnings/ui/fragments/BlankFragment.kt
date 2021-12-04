@@ -9,8 +9,6 @@ import com.azuredragon.learnings.ktxextensions.awaitTillNextLayout
 import com.azuredragon.learnings.ktxextensions.dataBindingsLazy
 import com.azuredragon.learnings.ktxextensions.viewLifeCycleScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.supervisorScope
 
 class BlankFragment: Fragment(R.layout.fragment_blank) {
 
@@ -26,14 +24,6 @@ class BlankFragment: Fragment(R.layout.fragment_blank) {
             view.awaitTillNextLayout()
 
             blankBinding.slider.value = 50f
-
-            coroutineScope {
-
-            }
-
-            supervisorScope {
-
-            }
         }
     }
 
