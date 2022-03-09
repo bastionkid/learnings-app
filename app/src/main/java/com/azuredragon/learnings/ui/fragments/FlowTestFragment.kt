@@ -22,7 +22,7 @@ class FlowTestFragment: Fragment(R.layout.fragment_flow_test) {
 
     private val flowTestViewModel: FlowTestViewModel by viewModels()
 
-    @ExperimentalCoroutinesApi
+    @OptIn(ExperimentalCoroutinesApi::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

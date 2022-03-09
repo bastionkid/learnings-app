@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     buildFeatures {
         dataBinding = true
@@ -15,7 +15,7 @@ android {
     defaultConfig {
         applicationId "com.azuredragon.learnings"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -60,7 +60,6 @@ dependencies {
 
     //androidx
     implementation "androidx.core:core-ktx:$ktxVersion"
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
     implementation "androidx.savedstate:savedstate:$savedStateVersion"

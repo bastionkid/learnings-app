@@ -14,7 +14,7 @@ class BlankFragment: Fragment(R.layout.fragment_blank) {
 
     private val blankBinding: FragmentBlankBinding by dataBindingsLazy()
 
-    @ExperimentalCoroutinesApi
+    @OptIn(ExperimentalCoroutinesApi::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
