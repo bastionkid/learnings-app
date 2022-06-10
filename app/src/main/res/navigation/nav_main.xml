@@ -57,7 +57,7 @@
 
     <fragment
         android:id="@+id/composeFragment"
-        android:name="com.azuredragon.learnings.ui.fragments.ComposeFragment"
+        android:name="com.azuredragon.learnings.ui.fragments.SnapshotTestFragment"
         android:label="ComposeFragment" />
 
 </navigation>

@@ -7,21 +7,35 @@ import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.azuredragon.learnings.ui.viewmodels.ComposeViewModel
-import com.azuredragon.learnings.ui.viewmodels.FlowTestViewModel
+import androidx.lifecycle.lifecycleScope
+import com.azuredragon.learnings.ui.viewmodels.SnapshotTestViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
-class ComposeFragment: Fragment() {
+class SnapshotTestFragment: Fragment() {
 
-    private val composeViewModel: ComposeViewModel by viewModels()
+    private val snapshotTestViewModel: SnapshotTestViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        lifecycleScope.launch(Dispatchers.Main) {
+            snapshotTestViewModel
+        }
+
         return ComposeView(requireContext()).apply {
             setContent {
+                val uiState = snapshotTestViewModel.uiState.value
+
+                SideEffect {
+                    Timber.d("setContent composable finished")
+                }
+
                 Surface {
-                    Column() {
+                    Column {
                         Text(text = "Hello World")
                     }
                 }
@@ -35,6 +49,6 @@ class ComposeFragment: Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = ComposeFragment()
+        fun newInstance() = SnapshotTestFragment()
     }
 }
