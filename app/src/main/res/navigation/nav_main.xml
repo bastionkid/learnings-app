@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/composeFragment">
+    app:startDestination="@id/composeAnimationFragment">
 
     <fragment
         android:id="@+id/lottieFragment"
@@ -56,8 +56,13 @@
         tools:layout="@layout/fragment_surface_view_test" />
 
     <fragment
-        android:id="@+id/composeFragment"
+        android:id="@+id/snapshotTestFragment"
         android:name="com.azuredragon.learnings.ui.fragments.SnapshotTestFragment"
-        android:label="ComposeFragment" />
+        android:label="SnapshotTestFragment" />
+
+    <fragment
+        android:id="@+id/composeAnimationFragment"
+        android:name="com.azuredragon.learnings.ui.fragments.ComposeAnimationFragment"
+        android:label="ComposeAnimationFragment" />
 
 </navigation>
