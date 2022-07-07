@@ -1,3 +1,5 @@
 include ':app',
-        ':lintrules'
+        ':lintrules',
+        ':benchmark'
+
 rootProject.name = "LearningsApp"

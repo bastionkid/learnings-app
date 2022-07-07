@@ -24,19 +24,36 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file('learningsapp.jks')
+            storePassword 'servererror'
+            keyAlias 'app'
+            keyPassword 'servererror'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        // Configure the benchmark buildType as close to the release version as possible
+        benchmark {
+            initWith buildTypes.release
+            // Selects release buildType if the benchmark buildType not available in other modules.
+            matchingFallbacks = ['release']
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'benchmark-rules.pro'
         }
     }
 
     compileOptions {
-        coreLibraryDesugaringEnabled true
+//        coreLibraryDesugaringEnabled true
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion composeVersion
+        kotlinCompilerExtensionVersion composeCompilerVersion
         kotlinCompilerVersion kotlinVersion
     }
 
@@ -108,7 +125,7 @@ dependencies {
 
     implementation "com.jakewharton.timber:timber:$timberVersion"
 
-    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$desugarVersion"
+//    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$desugarVersion"
 
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion"
 

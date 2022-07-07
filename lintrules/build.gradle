@@ -1,5 +1,4 @@
 plugins {
-    id 'java-library'
     id 'kotlin'
     id 'com.android.lint'
 }
@@ -10,11 +9,6 @@ lintOptions {
     textReport true
     absolutePaths false
     ignoreTestSources true
-}
-
-java {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
 }
 
 dependencies {
