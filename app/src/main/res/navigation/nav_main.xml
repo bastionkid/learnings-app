@@ -65,4 +65,13 @@
         android:name="com.azuredragon.learnings.ui.fragments.ComposeAnimationFragment"
         android:label="ComposeAnimationFragment" />
 
+    <activity
+        android:id="@+id/navigationTestActivity"
+        android:name="com.azuredragon.learnings.ui.activities.NavigationTestActivity"
+        android:label="NavigationTestActivity" />
+
+    <action
+        android:id="@+id/action_global_navigation_test"
+        app:destination="@id/navigationTestActivity" />
+
 </navigation>
