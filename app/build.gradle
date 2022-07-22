@@ -54,21 +54,18 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion composeCompilerVersion
-        kotlinCompilerVersion kotlinVersion
     }
 
-    lintOptions {
-        htmlReport true
-        htmlOutput file("lint-report.html")
-        disable 'GoogleAppIndexingWarning'
-        textReport true
-        textOutput "stdout"
+    lint {
         abortOnError true
+        disable 'GoogleAppIndexingWarning'
+        htmlOutput file('lint-report.html')
+        htmlReport true
+        textOutput file('stdout')
+        textReport true
     }
 
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+    namespace 'com.azuredragon.learnings'
 }
 
 kapt {

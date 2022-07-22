@@ -2,7 +2,7 @@
 buildscript {
     ext {
         //tooling
-        gradlePluginVersion = '7.0.0'
+        gradlePluginVersion = '7.2.1'
         kotlinVersion = '1.7.0'
         ktlintVersion = '0.29.0'
         desugarVersion = '1.1.5'
@@ -51,8 +51,9 @@ buildscript {
 
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         mavenLocal()
+        maven { url 'https://www.jitpack.io' }
     }
 
     dependencies {
@@ -68,7 +69,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         mavenLocal()
         maven { url 'https://www.jitpack.io' }
     }
