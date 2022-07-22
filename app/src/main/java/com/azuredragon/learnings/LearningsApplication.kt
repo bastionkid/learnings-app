@@ -2,6 +2,7 @@ package com.azuredragon.learnings
 
 import android.app.Application
 import android.content.Context
+import com.azuredragon.learnings.utils.enableStrictModePolicy
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
@@ -13,6 +14,8 @@ class LearningsApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        enableStrictModePolicy()
 
         if (BuildConfig.DEBUG) {
             Timber.plant(object : DebugTree() {
