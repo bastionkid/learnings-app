@@ -141,6 +141,7 @@ dependencies {
     implementation "com.google.accompanist:accompanist-placeholder:0.17.0"
     implementation 'androidx.paging:paging-compose:1.0.0-alpha15'
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.25.0"
 
     // Accompanist
     implementation "com.google.accompanist:accompanist-swiperefresh:0.15.0"
