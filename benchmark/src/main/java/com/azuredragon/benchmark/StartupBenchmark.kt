@@ -49,23 +49,23 @@ open class StartupBenchmark(private val startupMode: StartupMode) {
     @Test
     fun startupNoCompilation() = startup(CompilationMode.None())
 
-    @Test
-    fun startupBaselineProfileDisabled() = startup(
-        CompilationMode.Partial(baselineProfileMode = BaselineProfileMode.Disable, warmupIterations = 1)
-    )
-
-    @Test
-    fun startupBaselineProfile() = startup(CompilationMode.Partial(baselineProfileMode = BaselineProfileMode.Require))
-
-    @Test
-    fun startupFullCompilation() = startup(CompilationMode.Full())
+//    @Test
+//    fun startupBaselineProfileDisabled() = startup(
+//        CompilationMode.Partial(baselineProfileMode = BaselineProfileMode.Disable, warmupIterations = 1)
+//    )
+//
+//    @Test
+//    fun startupBaselineProfile() = startup(CompilationMode.Partial(baselineProfileMode = BaselineProfileMode.Require))
+//
+//    @Test
+//    fun startupFullCompilation() = startup(CompilationMode.Full())
 
     private fun startup(compilationMode: CompilationMode) = benchmarkRule.measureRepeated(
         packageName = PACKAGE_NAME,
         metrics = listOf(StartupTimingMetric()),
         compilationMode = compilationMode,
         startupMode = startupMode,
-        iterations = 1,
+        iterations = 10,
         setupBlock = {
             pressHome()
         }
