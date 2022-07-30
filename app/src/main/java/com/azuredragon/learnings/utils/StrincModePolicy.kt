@@ -13,7 +13,7 @@ fun enableStrictModePolicy() {
             .detectNetwork() // or .detectAll() for all detectable problems
             .apply {
                 if (BuildConfig.DEBUG) {
-                    penaltyDeath()
+                    penaltyLog()
                 } else {
                     //TODO(akashkhunt): 22/05/22 Log an event for this
                 }
@@ -28,7 +28,7 @@ fun enableStrictModePolicy() {
             .detectLeakedClosableObjects() // or .detectAll() for all detectable problems
             .apply {
                 if (BuildConfig.DEBUG) {
-                    penaltyDeath()
+                    penaltyLog()
                 } else {
                     //TODO(akashkhunt): 22/05/22 Log an event for this
                 }
