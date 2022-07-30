@@ -47,6 +47,8 @@ buildscript {
         lintVersion = '30.1.2'
 
         blurryVersion = '4.0.0'
+
+        profileInstallerVersion = '1.2.0'
     }
 
     repositories {

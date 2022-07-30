@@ -35,13 +35,14 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
         // Configure the benchmark buildType as close to the release version as possible
         benchmark {
             initWith buildTypes.release
+            minifyEnabled false
             // Selects release buildType if the benchmark buildType not available in other modules.
             matchingFallbacks = ['release']
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'benchmark-rules.pro'
@@ -63,6 +64,12 @@ android {
         htmlReport true
         textOutput file('stdout')
         textReport true
+    }
+
+    packagingOptions {
+        resources {
+            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+        }
     }
 
     namespace 'com.azuredragon.learnings'
@@ -146,4 +153,6 @@ dependencies {
     // Accompanist
     implementation "com.google.accompanist:accompanist-swiperefresh:0.15.0"
     implementation "com.google.accompanist:accompanist-pager:0.12.0"
+
+    implementation "androidx.profileinstaller:profileinstaller:$profileInstallerVersion"
 }
